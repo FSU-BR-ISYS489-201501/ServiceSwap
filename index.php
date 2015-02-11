@@ -2,9 +2,16 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" type="text/css" href="Libraries/bootstrap/css/bootstrap.css">
 </head>
 <body>
-<?php include ('headings.php'); ?>
+
+<?php include ('Resources/Includes/NavBarNotLogged.php'); ?>
+<br>
+<br>
+<br>
+<br>
+<br>
 <!--add a link to a html file in the root folder. You can have fun  with that file. Add what ever you would like.-->
 <a href=jordanPiepkow.html>Jordan Piepkow</a>
 <br>
@@ -16,7 +23,7 @@
 <br>
 <a href=#>Brian Caughell </a>
 <br>
-<a href=#>Keegan Connor </a>
+<a href=KeeganPush.html>Keegan Connor </a>
 <br>
 <a href=#>Jamye Cook </a>
 <br>
