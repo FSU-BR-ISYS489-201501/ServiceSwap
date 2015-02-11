@@ -2,16 +2,10 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="Libraries/bootstrap/css/bootstrap.css">
 </head>
 <body>
 
-<?php include ('Resources/Includes/NavBarNotLogged.php'); ?>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <!--add a link to a html file in the root folder. You can have fun  with that file. Add what ever you would like.-->
 <a href=jordanPiepkow.html>Jordan Piepkow</a>
 <br>
