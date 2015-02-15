@@ -29,7 +29,7 @@
 <br>
 <a href=#>Lucas Magalski </a>
 <br>
-<a href=#>Blake Novosel </a>
+<a href=BlakeNovosel.html>Blake Novosel </a>
 <br>
 <a href=#>Javier Orozco </a>
 <br>
