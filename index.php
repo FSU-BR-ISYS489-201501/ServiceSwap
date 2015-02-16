@@ -15,7 +15,7 @@
 <br>
 <a href=#>Joseph Brown </a>
 <br>
-<a href=#>Brian Caughell </a>
+<a href=BrianCaughell.html>Brian Caughell </a>
 <br>
 <a href=KeeganPush.html>Keegan Connor </a>
 <br>
