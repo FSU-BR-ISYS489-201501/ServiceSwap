@@ -9,7 +9,7 @@
 <!--add a link to a html file in the root folder. You can have fun  with that file. Add what ever you would like.-->
 <a href=jordanPiepkow.html>Jordan Piepkow</a>
 <br>
-<a href=#>Zachary Adkins </a>
+<a href=ZacharyAdkins.html>Zachary Adkins </a>
 <br>
 <a href=TravisAwrey.html>Travis Awrey </a>
 <br>
