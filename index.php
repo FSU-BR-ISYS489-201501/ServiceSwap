@@ -13,7 +13,7 @@
 <br>
 <a href=TravisAwrey.html>Travis Awrey </a>
 <br>
-<a href=#>Joseph Brown </a>
+<a href=joeBrownTestPage.html>Joseph Brown </a>
 <br>
 <a href=BrianCaughell.html>Brian Caughell </a>
 <br>
