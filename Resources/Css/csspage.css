@@ -1,0 +1,96 @@
+/* csspage.css */
+
+* { 
+  margin: 0; 
+  padding: 0;
+}
+
+body {
+  font-size: 0.9em;
+  font-family: Verdana, sans-serif;
+  background-color: blue;
+}
+
+#container {
+  width: 960px;
+  margin: 0 auto;
+  border-width: 1px;
+}
+
+
+#row{
+  width: 500px;
+  margin: 0 auto;
+  float: right;
+  border-width: 1px;
+}
+
+#info{
+  width: 450px;
+  color: white;
+  float: left;
+} 
+
+#info h2 {
+  text-align: left;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#info h3 {
+  text-align: left;
+  margin: 1em 0;
+}
+
+#info p {
+  color: black;
+  text-indent: 1em;
+  line-height: 1.5;
+  margin-top: 1em;
+}
+
+#info ul {
+  color: black;
+  line-height: 1.5;
+  margin-top: 1em;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+th,td {
+    padding: 15px;
+}
+  
+footer {
+  color: purple;
+  margin-top: 1em;
+  border-top: solid thick black;
+  clear: both;
+  text-align: center;
+}
+
+footer p {
+  margin: 1em;
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+footer a {
+  color: white;
+  padding: 0.25em;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: none;
+}
+
+footer a:hover {
+  background-color: black;
+}
+
+img {
+   margin: 0 auto;
+   display: block;
+   background-color: black;
+}
