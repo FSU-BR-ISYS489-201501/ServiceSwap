@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+ <!--    
+    Amber Snow
+    ISYS-288 Fall 2014	
+ -->
+  <!-- Header -->
+<head>
+	 <title>Amber's HTML Page</title>
+	<link rel="stylesheet" href="Resources/Css/csspage.css" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+ <!--    
+   Style sheet CSS Code
+ -->
+    <style type="text/css">
+
+    form {
+    margin-top: 1em;
+    padding: 1em;
+    font-size: 16px;
+    }
+
+    form div {
+    margin: 0;
+    padding: 0.5em 0 0 0;
+    clear: both;
+    }
+
+    label {
+    width: 300px;
+    color: black;
+    text-align: right;
+    float: left;
+    }
+
+    input{
+    display: block; 
+    width: 150px;
+    }
+
+    legend {  
+    color: white;
+    background-color: Purple;
+    font-weight: bold;
+    }
+
+    fieldset {
+    margin-bottom: 1em;   
+    border: solid 2px black;
+    background-color: white;
+    }
+
+  </style>
+
+</head>
+<!-- Body information -->
+<body>
+
+  <section id="container">
+
+	<!-- Img and attributes -->
+      <p><img src="Resources/Images/dragon.jpg" 
+           alt="ME" 
+	   width = "800"
+	   height = "400"/>
+     </p>
+   
+
+    <section id="row">
+	<!-- Little survey information -->
+	<!-- It goes no where -->
+      <form id="Survey" name = "survey" method = "post">
+
+      </form>
+
+	    <!-- Exercise in creating text fields & radio buttons  -->
+        <fieldset><legend>Personal Information</legend>
+      
+	    <!-- Text field for First name  -->
+        <label for = "firstname"> First Name</label>
+        <input type = "text" name = "firstname" id = "firstname" /> 
+		
+		<!-- Text field for last name  -->
+        <label for = "lastname"> Last Name</label>
+        <input type = "text" name = "lastname" id = "lastname" /> 
+
+		<!-- Male or Female radio buttons -->
+        <fieldset><legend>Gender Specifics</legend>
+        <label for = "male"> Male </label>   
+	    <input type = "radio" id = "male" name = "gender" value = "male"/>
+        
+        <label for = "female"> Female </label>
+	    <input type = "radio" id = "female" name = "gender" value = "female" checked = "checked"/>
+
+
+	</fieldset>
+
+        <fieldset><legend>Submit Your Information</legend>
+
+        <table>
+        <tr>
+		<!-- Creating a submit button  -->	
+           <td>
+           <input type="submit" value="Submit" class="button" />
+           </form></td>
+
+           <td>
+           <input type="reset" value="Reset" class="button" />
+           </form></td>
+
+       </tr>
+       </table>
+
+      </form>
+
+    </section> 
+
+    <section id="info">
+
+      <h2>Info Time!</h2>
+
+      <p> This form is created to tell the user a little bit about yourself! It asks for your first and last names, your SS#, phone numbers, street address and a bunch of other lovely things that we can use to "protect" you. </p>
+
+      <h3>About the Author</h3>
+      <p> So, The Author of this web site is named Amberlamps. She started this page due to a little assignment in one of her college courses. She enjoys playing video games and programming them in her free time. She would not be lieing if she said she more then a little rusty at the whole HTML language and has almost no CSS knowledge. So, this was a refresher for her and a little more of a challenge.</p>
+	  <p> I have my associates degree in computer programming, a lot of my experience comes from stand a lone applications and do not have a lot of experience working as a team with deadlines.</p>
+	  <p> I have experience coding mostly in C++, Java, SQL, and VB. I have a little experience in HTML and PHP, but am willing to learn and grow. </p>
+	  
+      <h3>Jokes</h3>
+      <ul>
+      <li> Bugs fly in through open windows </li>
+      <li> If you delete the system 32 file your computer will run a lot faster.</li>
+      <li> 99 bugs in the program; 99 bugs in the program; fix one bug compile it again; 103 bugs in the program </li>
+     </ul>
+
+	<--
+     <table style = "width:100%">
+     <tr>
+        <th colspan="4"> Game Alias Names</th> 
+     </tr>
+     <tr> 
+	<td>Final Fantasy: </td>
+        <td>Dragon Quest 8:</td>
+        <td>Monster Hunter:</td>
+        <td>Dragon Age:    </td> 
+     </tr>
+     <tr>
+	<td>Yuki Mari</td>
+        <td>Calvin</td>
+        <td>Sayna</td>
+        <td>Rain</td>
+     </tr>
+
+    </table>
+    </section> 
+
+    <footer>
+      <p>*Video Game Links*</p>
+      <a href="http://ffxivhunt.com/">Final Fantasy -</a><a href="http://www.dragonquest8.com/">Dragon Quest 8 -</a><a href="http://www.dragonage.com/#!/en_US/home/latest-trailer">Dragon Age -</a><a href="http://monsterhunter.wikia.com/wiki/Monster_Hunter_Wiki">Monster Hunter</a> 
+    </footer> 
+
+  </section> 
+
+</body>
+</html>
