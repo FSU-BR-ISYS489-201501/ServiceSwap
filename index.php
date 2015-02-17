@@ -19,7 +19,7 @@
 <br>
 <a href=KeeganPush.html>Keegan Connor </a>
 <br>
-<a href=#>Jamye Cook </a>
+<a href=JamyeCook.html>Jamye Cook </a>
 <br>
 <a href=#>Stephanie Evans </a>
 <br>
