@@ -35,7 +35,7 @@
 <br>
 <a href=Kevin.html>Kevin Reimer-Ranke</a>
 <br>
-<a href=#>Amber Snow</a>
+<a href=AmberSnow.html>Amber Snow</a>
 <br>
 </body>
 </html>
