@@ -33,7 +33,7 @@
 <br>
 <a href=#>Javier Orozco </a>
 <br>
-<a href=KevinRankeTest.html>Kevin Reimer-Ranke</a>
+<a href=Kevin.html>Kevin Reimer-Ranke</a>
 <br>
 <a href=#>Amber Snow</a>
 <br>
