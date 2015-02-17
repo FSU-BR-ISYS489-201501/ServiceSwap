@@ -27,7 +27,7 @@
 <br>
 <a href=#>Brandon Johnson</a>
 <br>
-<a href=#>Lucas Magalski </a>
+<a href=#MagalskiIndex.html>Lucas Magalski </a>
 <br>
 <a href=BlakeNovosel.html>Blake Novosel </a>
 <br>
