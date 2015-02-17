@@ -7,24 +7,30 @@
 
 <body style=background-color:black;>
 <div class="wrapper">
-	<div style="min-width:1366px;min-height:500px;display:block;font-family:Arial, Helvetica, sans-serif">
-    	<div style="text-align:center;">
+	<!--Webpage content container; makes sure page is at least 1366px in width and sets default font-->
+	<div class="container" style="min-width:1366px;min-height:500px;display:block;font-family:Arial, Helvetica, sans-serif">
+		<!--Header div that contains the logo and title of the page-->
+    	<div class="header" style="text-align:center;">
         	<div class="logo" style="margin:0 auto;">
             	<img src="Resources/Images/ZALogo.png" width="175px"/>
             </div>
             <div class="title" style="margin:0 auto;padding-top:20px;font-size:36px;font-family:'Comic Sans MS', cursive;color:white;">
             	Zachary Adkins' Page
             </div>
+			<!--Div created to divide out the page using a line-->
             <div style="margin:0 auto;width:60%;height:1px;background-color:grey;margin-top:30px;margin-bottom:30px;">
             </div>
         </div>
+		<!--Body of the page; text-align:center for centering inline-blocks and text-->
         <div class="body" style="width:100%;margin:0 auto;color:white;text-align:center;">
+			<!--Content of the page; includes biography and contact info-->
         	<div class="content" style="width:80%;display:inline-block;">
             	<div class="head" style="padding-bottom:15px;font-size:30px;font-family:'Comic Sans MS', cursive;">
                 	About Me
                 </div>
                 </br>
                 <img src="Resources/Images/imageZach.jpg" width="500px"/>
+				<--"bio" class used to separate each paragraph of the biography-->
                 <div class="bio" style="padding:30px;padding-top:30px;width:75%;display:inline-block;">
                 	Hello everyone! My name is Zach Adkins, and I am a senior majoring in Computer Information Systems. I am planning on graduating next year after I find an internship. I hope to get one in either programming, web design, or in database work.
 				</div>
@@ -38,18 +44,23 @@
 					I spend a lot of my free time playing videogames, listening to music, and sometimes watching anime. I mainly play League of Legends, but sometimes I switch it up with other PC games on Steam if I find something that catches my eye. My favorite type of music would be chiptune music. School is my priority until I graduate, but these activities get me to procrastinate some of the time.
 				</div>
                 </br>
+				<!--Line div to separate the biography from contact info-->
                 <div style="margin:0 auto;width:50%;height:1px;background-color:grey;margin-top:30px;margin-bottom:30px;">
             	</div>
-                <div class="head" style="padding-bottom:15px;font-size:30px;font-family:'Comic Sans MS', cursive;">Contact Information</div>
-                <div class="bio" style="padding-bottom:10px;width:75%;display:inline-block;">
+				<!--Contact information div; each item separated with div class "contlist"-->
+                <div class="head" style="padding-bottom:15px;font-size:30px;font-family:'Comic Sans MS', cursive;">
+				Contact Information</div>
+                <div class="contlist" style="padding-bottom:10px;width:75%;display:inline-block;">
                 Email: adkinsz1@ferris.edu
                 </div>
-                <div class="bio" style="width:75%;display:inline-block;">
+                <div class="contlist" style="width:75%;display:inline-block;">
                 Phone: (231)220-3158
                 </div>
             </div>
+			<!--Line div to separate the footer from the page content-->
             <div style="margin:0 auto;width:30%;height:1px;background-color:grey;margin-top:30px;margin-bottom:30px;">
             </div>
+			<!--Footer; bottom of the page-->
             <div class="footer" style="font-size:12px;padding-bottom:10px;">Webpage created by Zachary Adkins</div>
         </div>
     </div>
