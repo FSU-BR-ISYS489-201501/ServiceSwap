@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac69e1fb-21ab-4a0c-b750-b5f51069b527" name="Default" comment="" />
+    <list default="true" id="ac69e1fb-21ab-4a0c-b750-b5f51069b527" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Root.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +28,7 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
+            <state line="18" column="4" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
               <folding />
             </state>
           </provider>
@@ -35,7 +37,7 @@
       <file leaf-file-name="KeeganPush.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KeeganPush.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="272">
+            <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
@@ -44,7 +46,7 @@
       <file leaf-file-name="JordanPiepkow.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JordanPiepkow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="64" selection-start="212" selection-end="212" vertical-scroll-proportion="0.18930958" vertical-offset="0" max-vertical-offset="898">
+            <state line="7" column="32" selection-start="151" selection-end="151" vertical-scroll-proportion="0.13446328" vertical-offset="0" max-vertical-offset="885">
               <folding />
             </state>
           </provider>
@@ -260,7 +262,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestRoot/Root" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../alecs_shit" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -332,6 +334,48 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KeeganPush.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JordanPiepkow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="7" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KeeganPush.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JordanPiepkow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="64" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
@@ -556,21 +600,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="4" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
+        <state line="18" column="4" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KeeganPush.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="272">
+        <state line="6" column="32" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="272">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JordanPiepkow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="64" selection-start="212" selection-end="212" vertical-scroll-proportion="0.18930958" vertical-offset="0" max-vertical-offset="898">
+        <state line="7" column="32" selection-start="151" selection-end="151" vertical-scroll-proportion="0.13446328" vertical-offset="0" max-vertical-offset="885">
           <folding />
         </state>
       </provider>
