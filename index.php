@@ -17,21 +17,21 @@
 <br>
 <a href=BrianCaughell.html>Brian Caughell </a>
 <br>
-<a href=KeeganPush.html>Keegan Connor </a>
+<a href=KeeganConnor.html>Keegan Connor </a>
 <br>
 <a href=JamyeCook.html>Jamye Cook </a>
 <br>
-<a href=#>Stephanie Evans </a>
+<a href=StephanieEvas.html>Stephanie Evans </a>
 <br>
-<a href=#>Joshua Gruszcynski</a>
+<a href=JoshGruszcynski.html>Joshua Gruszcynski</a>
 <br>
 <a href=#>Brandon Johnson</a>
 <br>
-<a href=#MagalskiIndex.html>Lucas Magalski </a>
+<a href=MagalskiIndex.html>Lucas Magalski </a>
 <br>
 <a href=BlakeNovosel.html>Blake Novosel </a>
 <br>
-<a href=#>Javier Orozco </a>
+<a href=orozco.html>Javier Orozco </a>
 <br>
 <a href=KevinReimerRanke.html>Kevin Reimer-Ranke</a>
 <br>
