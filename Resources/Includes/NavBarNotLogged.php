@@ -41,65 +41,88 @@
 
 
                                     <br><br><br><br>
-
+                                    <form action="Resources/Php/Register.php" method="post">
                                     <div class="col-md-10">
                                         <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">Email</span>
-                                            <input type="text" class="form-control" placeholder=""
+                                            <span class="input-group-addon" id="basic-addon1">First name</span>
+                                            <input type="text" name="FirstName" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Last name</span>
+                                            <input type="text" name="LastName" class="form-control" placeholder=""
                                                    aria-describedby="basic-addon1">
                                         </div>
                                         <br>
 
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">Username</span>
-                                            <input type="text" class="form-control" placeholder=""
+                                            <input type="text" name="UserName" class="form-control" placeholder=""
                                                    aria-describedby="basic-addon1">
                                         </div>
                                         <br>
 
                                         <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">Password</span>
-                                            <input type="text" class="form-control" placeholder=""
-                                                   aria-describedby="basic-addon1">
-                                        </div>
-                                        <br>
-
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1">Retype Password</span>
-                                            <input type="text" class="form-control" placeholder=""
+                                            <span class="input-group-addon" id="basic-addon1">Address</span>
+                                            <input type="text" name="Address" class="form-control" placeholder=""
                                                    aria-describedby="basic-addon1">
                                         </div>
                                         <br>
 
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">Email</span>
-                                            <input type="text" class="form-control" placeholder=""
+                                            <input type="text" name="Email" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Retype Email</span>
+                                            <input type="text" name="ReEmail" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Birthday</span>
+                                            <input type="text" name="Birthday" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Password</span>
+                                            <input type="password" name="Password" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Retype password</span>
+                                            <input type="password" name="RePassword" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
+                                        </div>
+                                        <br>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Phone number</span>
+                                            <input type="text" name="Phone" class="form-control" placeholder=""
                                                    aria-describedby="basic-addon1">
                                         </div>
                                         <br>
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> Provider
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> Consumer
-                                                    </label>
-                                                </div>
-                                            </div>
-
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="basic-addon1">Prefered method of communication</span>
+                                            <input type="text" name="Method" class="form-control" placeholder=""
+                                                   aria-describedby="basic-addon1">
                                         </div>
+                                        <br>
+
+
+
+
 
 
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-primary">Submit</button>
+                                                <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
                                             </div>
                                             <div class="col-md-4"></div>
                                             <div class="col-md-4"></div>
@@ -107,6 +130,7 @@
 
 
                                     </div>
+                                        </form>
                                     <br><br><br><br><br><br>
 
 
