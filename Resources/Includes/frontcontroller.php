@@ -1,8 +1,8 @@
 <?php
 
-function valid_pass($candidate)
+function valid_pass($pass)
 {
-    if (!preg_match_all('$\S*(?=\S{7,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$', $candidate))
+    if (!preg_match_all('$\S*(?=\S{7,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$', $pass))
         return FALSE;
     return TRUE;
 }
