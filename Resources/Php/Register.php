@@ -21,7 +21,7 @@ if (empty($FirstName) || empty($LastName) || empty($UserName) || empty($Address)
     echo "You did not fill out the required fields.";
     die(); // Note this
 }
-if (!filter_var($Email, FILTER_VALIDATE_EMAIL) || !filter_var($ReEmail, FILTER_VALIDATE_EMAIL)) {
+if (valid_email($Email) != true || valid_email($ReEmail) !=true) {
     echo("Invalid email format");
     die();
 }

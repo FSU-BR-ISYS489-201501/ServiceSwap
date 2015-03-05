@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac69e1fb-21ab-4a0c-b750-b5f51069b527" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Php/Register.php" afterPath="$PROJECT_DIR$/Resources/Php/Register.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Includes/frontcontroller.php" afterPath="$PROJECT_DIR$/Resources/Includes/frontcontroller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -26,12 +27,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Register.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Register.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/Php/Register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1623" selection-end="1623" vertical-scroll-proportion="-26.153847" vertical-offset="0" max-vertical-offset="1190">
+            <state line="52" column="0" selection-start="1961" selection-end="1961" vertical-scroll-proportion="0.8140312" vertical-offset="153" max-vertical-offset="1190">
               <folding>
-                <marker date="1425351532274" expanded="true" signature="1633:1845" placeholder="INSERT INTO ..." />
+                <marker date="1425525220910" expanded="true" signature="1602:1814" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -40,7 +41,7 @@
       <file leaf-file-name="password.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Php/password.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5253">
+            <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="9.807693" vertical-offset="459" max-vertical-offset="5151">
               <folding />
             </state>
           </provider>
@@ -49,16 +50,16 @@
       <file leaf-file-name="NavBarNotLogged.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Includes/NavBarNotLogged.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="49" selection-start="5387" selection-end="5387" vertical-scroll-proportion="0.0" vertical-offset="1074" max-vertical-offset="3893">
+            <state line="91" column="49" selection-start="5387" selection-end="5387" vertical-scroll-proportion="-0.0" vertical-offset="1547" max-vertical-offset="3893">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frontcontroller.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="frontcontroller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="2" selection-start="169" selection-end="169" vertical-scroll-proportion="0.17037863" vertical-offset="0" max-vertical-offset="898">
+            <state line="16" column="2" selection-start="294" selection-end="294" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
@@ -87,8 +88,8 @@
         <option value="$PROJECT_DIR$/Resources/Includes/config.php" />
         <option value="$PROJECT_DIR$/Resources/Php/password.php" />
         <option value="$PROJECT_DIR$/Resources/Includes/NavBarNotLogged.php" />
-        <option value="$PROJECT_DIR$/Resources/Php/Register.php" />
         <option value="$PROJECT_DIR$/Resources/Includes/frontcontroller.php" />
+        <option value="$PROJECT_DIR$/Resources/Php/Register.php" />
       </list>
     </option>
   </component>
@@ -125,7 +126,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -196,6 +196,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -247,7 +248,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -281,9 +282,69 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Resources/Php/Register.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="1" selection-start="1622" selection-end="1622" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <folding>
+            <marker date="1425525220910" expanded="true" signature="1602:1814" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Php/password.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Includes/NavBarNotLogged.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="49" selection-start="5387" selection-end="5387" vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="3893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="2" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Php/Register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1623" selection-end="1623" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <folding>
+            <marker date="1425525220910" expanded="true" signature="1602:1814" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Php/password.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5253">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Includes/NavBarNotLogged.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="49" selection-start="5387" selection-end="5387" vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="3893">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="2" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Php/Register.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="0" selection-start="1623" selection-end="1623" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1190">
           <folding>
-            <marker date="1425351532274" expanded="true" signature="1633:1845" placeholder="INSERT INTO ..." />
+            <marker date="1425525220910" expanded="true" signature="1602:1814" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
@@ -474,6 +535,13 @@
         <state line="1" column="6" selection-start="22" selection-end="22" vertical-scroll-proportion="0.018930959" vertical-offset="0" max-vertical-offset="898" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="2" selection-start="294" selection-end="294" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Includes/NavBarNotLogged.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="91" column="49" selection-start="5387" selection-end="5387" vertical-scroll-proportion="0.0" vertical-offset="1074" max-vertical-offset="3893">
@@ -483,24 +551,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Php/password.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="5253">
+        <state line="18" column="51" selection-start="718" selection-end="718" vertical-scroll-proportion="9.807693" vertical-offset="459" max-vertical-offset="5151">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Php/Register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1623" selection-end="1623" vertical-scroll-proportion="-26.153847" vertical-offset="0" max-vertical-offset="1190">
+        <state line="52" column="0" selection-start="1961" selection-end="1961" vertical-scroll-proportion="0.8140312" vertical-offset="153" max-vertical-offset="1190">
           <folding>
-            <marker date="1425351532274" expanded="true" signature="1633:1845" placeholder="INSERT INTO ..." />
+            <marker date="1425525220910" expanded="true" signature="1602:1814" placeholder="INSERT INTO ..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="169" selection-end="169" vertical-scroll-proportion="0.17037863" vertical-offset="0" max-vertical-offset="898">
-          <folding />
         </state>
       </provider>
     </entry>

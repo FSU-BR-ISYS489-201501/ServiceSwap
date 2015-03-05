@@ -6,5 +6,12 @@ function valid_pass($pass)
         return FALSE;
     return TRUE;
 }
+function valid_email($email)
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+        return FALSE;
+
+    return TRUE;
+}
 
 ?>
