@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac69e1fb-21ab-4a0c-b750-b5f51069b527" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Php/Register.php" afterPath="$PROJECT_DIR$/Resources/Php/Register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Includes/config.php" afterPath="$PROJECT_DIR$/Resources/Includes/config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Includes/frontcontroller.php" afterPath="$PROJECT_DIR$/Resources/Includes/frontcontroller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Root.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +58,7 @@
       <file leaf-file-name="frontcontroller.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="63" selection-start="374" selection-end="374" vertical-scroll-proportion="0.15144767" vertical-offset="0" max-vertical-offset="898">
+            <state line="1" column="146" selection-start="152" selection-end="152" vertical-scroll-proportion="0.018930959" vertical-offset="0" max-vertical-offset="898">
               <folding />
             </state>
           </provider>
@@ -583,7 +580,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Includes/frontcontroller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="63" selection-start="374" selection-end="374" vertical-scroll-proportion="0.15144767" vertical-offset="0" max-vertical-offset="898">
+        <state line="1" column="146" selection-start="152" selection-end="152" vertical-scroll-proportion="0.018930959" vertical-offset="0" max-vertical-offset="898">
           <folding />
         </state>
       </provider>
