@@ -7,7 +7,16 @@
  $page_title = "Add a Service to a Provider Account!";
  // Includes file needs to allow file_uploads = On
  //Add the Header
- //include ('includes/header.html'); ?>
+//include ('Resources/header.html');
+//include("Resources/file_with_errors.php"); 
+//include("Resources/Functions.php");
+//include("Resources/LoggedFooter.php");
+//include("Resources/NavBarLogged.php");
+//include("Resources/UnacceptedPhrases.php");
+
+//include("Resources/config.php");
+//include("Resources/frontcontroller.php");
+?>
  
 <!-- Get the connection to the Database -->
 <?php // require ('../mysqli_connect.php');?>
@@ -37,7 +46,7 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 		//$ServiceCategorys = $_SESSION["total"];
 		
 		//insert into the database
-	    $InsertInto = "INSERT INTO clients (Fname, Lname, Street, City, State, Zipcode, Phone, card) 
+	    $InsertInto = "INSERT INTO clients (OffServTitle, OffServDescription , ServCategory, , , , , ) 
 		VALUES ('$ShortName', '$ServiceDescripton', '$ServiceCategorys', '$TravelDistance','$SuggestedPrice', '$DateTime')";		
 		$RunInsertInto = @mysqli_query ($dbc, $InsertInto); // Run the query.
 		
@@ -59,34 +68,90 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 			<p class="error">Your service could not be placed due to a system error. We apologize for any inconvenience.</p>';
 		}
 		
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Creidt to: http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
+//by Anush on Tech Steam
+if(isset($_FILES['files'])){
+    $errors= array();
+	foreach($_FILES['files']['tmp_name'] as $key => $tmp_name ){
+		$file_name = $key.$_FILES['files']['name'][$key];
+		$file_size =$_FILES['files']['size'][$key];
+		$file_tmp =$_FILES['files']['tmp_name'][$key];
+		$file_type=$_FILES['files']['type'][$key];
+		
+        if($file_size > 640000)
+		{
+			$errors[]='File size must be less under 800 x 800 pixels';
+        }		
+        
+		$query="INSERT into OfferedServiceImages (`OffServImage`); ";
+        $desired_dir="user_data";
+		
+        if(empty($errors)==true)
+		{
+            if(is_dir($desired_dir)==false)
+			{
+                mkdir("$desired_dir", 0700);		// Create directory if it does not exist
+            }
+            if(is_dir("$desired_dir/".$file_name)==false)
+			{
+                move_uploaded_file($file_tmp,"user_data/".$file_name);
+            }
+			else
+			{									//rename the file if another one exist
+                $new_dir="user_data/".$file_name.time();
+                 rename($file_tmp,$new_dir) ;				
+            }
+            mysql_query($query);			
+        }
+		else
+		{
+                print_r($errors);
+        }
+    }
+
+}
+///end sources
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
 }		
 else 
 { // Invalid submitted values.
 	//the main error string
+
     $ErrorString = "You have not filled out the fields for";
 	
 	//runs through if else's to concat the string
 	if(empty($_POST['ShortName']))
-		{ $ErrorString = $ErrorString ."naming your service, ";}
+	{ 
+		$ErrorString = $ErrorString ."naming your service, ";
+	}
+	elseif(empty($_POST['ServiceDescripton'])) 
+	{
+		$ErrorString = $ErrorString."entering a service description, ";
+	}
 	
-	else if(empty($_POST['ServiceDescripton'])) 
-		{$ErrorString = $ErrorString."entering a service description, ";}
+	elseif(empty($_POST['ServiceCategorys'])) 
+	{
+		$ErrorString = $ErrorString."selecting a service category, ";
+	}
 	
-	else if(empty($_POST['ServiceCategorys'])) 
-		{$ErrorString = $ErrorString."selecting a service category, ";}
+	elseif(empty($_POST['TravelDistance']))	
+	{
+		$ErrorString = $ErrorString."selecting your travel distance, ";
+	}
 	
-	else if(empty($_POST['TravelDistance']))	
-		{$ErrorString = $ErrorString."selecting your travel distance, ";}
-	
-	else if(empty($_POST['SuggestedPrice']))
-		{$ErrorString = $ErrorString."naming your suggested price, ";}
+	elseif(empty($_POST['SuggestedPrice']))
+	{
+		$ErrorString = $ErrorString."naming your suggested price, ";
+	}
 	
 	//adding the ending
 	$ErrorString = $ErrorString."these are required to post the service";
 	
 	//Actually show the errors
 	echo '<h1>Error!</h1>
-	<p class="error">$ErrorString</p>';
+	<p class="error"> echo "$ErrorString"</p>';
 	
 }	
  // End of main
@@ -141,15 +206,14 @@ else
 				
 				<!-- SuggestedPrice Number Box -->
 				<p>
-					 <label>Enter your suggested price for your service: </label><br>
-					$<input type="number" name="SuggestedPrice" min = ".01" step="0.01" max = "100,000,000">
+					 <label>Enter your suggested price for your service and your currency: </label><br>
+					 <input type="text" name="SuggestedPrice" value ="<?php if(isset($_POST['SuggestedPrice'])) echo $_POST['SuggestedPrice']?>"/>
 				</p>
 				
 				<!-- Images to upload  -->
 				<p>
-					Select image to upload:
-					<input type = "file" name = "FileToUpload[]" id = "FileToUpload">
-					<input type = "button" id = " add_more " value = "Add More Files"/>
+					<label>Select up to 5 images to upload:</label><br>
+					<input type= "file" name = 'files[]' multiple = 'true'/>
 				</p>
 							
 	     <!-- Submit button -->
@@ -161,5 +225,5 @@ else
 </fieldset>
 </form>
 <br>	
-<?php include ('includes/footer.html');?>	
+<?php/include("Resources/LoggedFooter.php");?>	
 </html>
