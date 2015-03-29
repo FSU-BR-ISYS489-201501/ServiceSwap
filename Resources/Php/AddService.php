@@ -14,8 +14,8 @@
 //include("Resources/NavBarLogged.php");
 //include("Resources/UnacceptedPhrases.php");
 
-//include("Resources/config.php");
-//include("Resources/frontcontroller.php");
+include("Resources/config.php");
+include("Resources/frontcontroller.php");
 ?>
  
 <!-- Get the connection to the Database -->
@@ -69,7 +69,7 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 		}
 		
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Creidt to: http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
+//Credit to: http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
 //by Anush on Tech Steam
 if(isset($_FILES['files'])){
     $errors= array();
@@ -124,35 +124,35 @@ else
 	//runs through if else's to concat the string
 	if(empty($_POST['ShortName']))
 	{ 
-		$ErrorString = $ErrorString ."naming your service, ";
+		$ErrorString = "$ErrorString " . " " . "naming your service, ";
 	}
-	elseif(empty($_POST['ServiceDescripton'])) 
+	if(empty($_POST['ServiceDescripton'])) 
 	{
-		$ErrorString = $ErrorString."entering a service description, ";
-	}
-	
-	elseif(empty($_POST['ServiceCategorys'])) 
-	{
-		$ErrorString = $ErrorString."selecting a service category, ";
+		$ErrorString = "$ErrorString". " " ."entering a service description, ";
 	}
 	
-	elseif(empty($_POST['TravelDistance']))	
+	if(empty($_POST['ServiceCategorys'])) 
 	{
-		$ErrorString = $ErrorString."selecting your travel distance, ";
+		$ErrorString = "$ErrorString". " " ."selecting a service category, ";
 	}
 	
-	elseif(empty($_POST['SuggestedPrice']))
+	if(empty($_POST['TravelDistance']))	
 	{
-		$ErrorString = $ErrorString."naming your suggested price, ";
+		$ErrorString = "$ErrorString". " " . "selecting your travel distance, ";
+	}
+	
+	if(empty($_POST['SuggestedPrice']))
+	{
+		 $ErrorString = "$ErrorString". " " . "naming your suggested price, ";
 	}
 	
 	//adding the ending
-	$ErrorString = $ErrorString."these are required to post the service";
+	$ErrorString = "$ErrorString". " " . "these are required to post the service";
 	
-	//Actually show the errors
-	echo '<h1>Error!</h1>
-	<p class="error"> echo "$ErrorString"</p>';
-	
+	//Pop up error message box for all the fields they haven't filled out
+	echo "<SCRIPT>
+	alert('$ErrorString');
+	</SCRIPT>";	
 }	
  // End of main
 }
@@ -179,7 +179,7 @@ else
 				<!-- PHP for Select Box to categorize the Service listing-->
 				
 				<?php
-					// Will need to call in a file to get the listings
+					/*// Will need to call in a file to get the listings
 					//for what listing categorizes are recognized  
 					$ServiceArray = array(
 					'Carpentry','Child Care','Cleaning','Computer',
@@ -187,16 +187,34 @@ else
 					'Driving','Furniture Refinishing','Garden Work','Handy Man',
 					'House Repairs','Mechanical','Painting','Photography',
 					'Scrap Booking','Sewing','Shopping','Tree Trimming',
-					'Tutoring','Yard Work');
+					'Tutoring','Yard Work');*/
+				?>
+				
+				<!-- Researched from http://stackoverflow.com/questions/24471268/dropdown-list-from-mysql-column-using-mysqli 
+				moded by Amber Snow-->
+					<label>Select your service type</label><br>
 
-				//create the state select menu
+					<select SC = "ServiceCategories">
+					<option value = "">-Select Category-</option>
+				<?php
+					$querySC= "SELECT `ServCategory` FROM `ServiceCategories` ";
+					$db = mysqli_query($db, $querySC);
+					while ($data = mysqli_fetch_assoc($db)) 
+					{
+						echo "<option value='{".$data['ServCategory']."}'>".$data['ServCategory']."</option>";
+					}
+				   ?>
+				</select>  
+					
+				<!-- Old way b4 database to get the array data for service categories	
+				create the state select menu
 				echo '<select name = "ServiceCategorys">';
 					foreach($ServiceArray as $value)
 					{
 						echo"<option value =\"$value\"> $value </option> \n";
 					}
-				echo '</select>';
-				?>
+				echo '</select>'; 
+				-->
 					
 				<!-- TravelDistance Number Box -->
 				<p>
