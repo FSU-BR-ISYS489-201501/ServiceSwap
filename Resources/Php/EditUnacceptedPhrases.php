@@ -3,104 +3,26 @@
 <!-- EditUnacceptedPhrases.php 
 Author: Brian Caughell
 Date: March 2015
-Description: Page to list, edit, delete, and add new unacceptable phrases within the database.
-Dependencies: PhraseAjax.php
-					Config.php
-To Do: 	Connect to live database with new config file	
-			Read session data for Employee ID
-			Pass Employee ID to new entries and edits
-			Depending on how the config file is coded, all references to $Connection may need to be changed
+Description: A quick and dirty page to list, add to, edit, and delete a list of unaccepted phrases. 
+Dependencies: Unaccepted Phrases list(currently a text file, this will need to be changed to point to the DB
+when it's available. 
+			NewUnacceptedPhrase.php
+			EditExistingPhrase.php
+			CommitEdit.php
+			ConfirmDelete.php
+			DeletePhrase.php
+To Do: 	More thorough error checking (don't allow numbers, possibly check for common words, set a minimum character number)
+		Set a character limit for submissions- need the data dictionary for this
+		Change from accessing text list to database table
+		Combine common actions to functions (Check for duplicates, add phrase, delete phrase)
+		Javascript for pop-up windows- this will combine the dependent php files to this one
+		Check input data for SQL injection
 -->
-<head> 
-<!-- BC-  jQuery scripts and stylesheets courtesy jquery.com -->
-<link rel="stylesheet" type="text/css" href="../Css/jquery-ui.css">
-<script src="../Js/jquery-1.11.2.min.js"></script>
-<script src="../Js/jquery-ui.js"></script>
- <script>
-$(document).ready(function() {
-	<!-- BC- jQuery confirmation box for edits/deletes -->
-	$("#ConfirmDialog").dialog({
-		autoOpen:false,
-		resizable: false,
-		width: 350,
-		modal: true,
-		buttons:{
-			"OK":function(){
-			$(this).dialog("close");
-			$(this).innerHTML = ""; // BC- Clear out the confirmation text from the dialog.
-			location.reload(); // BC- Reload the page- the calling function has return false so the modal form will display 
-			$("#newentry").val(""); // BC- Clear any text within the newentry text field
-			}
-		}
-	});
-	<!-- BC- jQuery delete dialog -->
-	$("#DeleteDialog").dialog({
-		autoOpen: false,
-		resizable: false,
-		width: 350,
-		modal: true,
-		buttons: {
-			"OK": function(){
-				$(this).dialog("close");
-				$("#confirmdelete").submit(); // BC- Submit the form- this will be handled by AJAX
-			},
-			Cancel: function() {
-				$(this).dialog("close");
-			}
-		}
-		});
-	<!-- BC- jQuery delete button click event handler -->
-	$( ".DeleteButton").click(function() {
-		$(".phrasetodelete").val($(this).attr("value")); // BC- Set the values in the dialog to the corresponding values of the button
-		$(".idtodelete").val($(this).attr("name"));
-		$("#DeleteDialog").dialog( "open" ); // BC- Open the DeleteDialog 
-	});
-	<!-- BC- jQuery edit dialog -->
-	$("#EditDialog").dialog({
-		autoOpen: false,
-		resizable: false,
-		width: 350,
-		modal: true,
-		buttons: {
-			"OK": function(){
-				$(this).dialog("close");
-				$("#editphrase").submit(); // BC- Submit the form, AJAX handles the submission
-				},
-			Cancel: function() {
-				$(this).dialog("close");
-				$(".phrasetoedit").val(""); // BC- Clear out any values that were pulled into the dialog
-				$("#newentry").val("");
-				$(".idtoedit").val("");
-			}
-		}
-		});
-	<!-- BC- jQuery edit button click event handler -->
-	$( ".EditButton").click(function() {
-		$(".phrasetoedit").val($(this).attr("value")); // BC- Set the values in the dialog to the corresponding values of the button
-		$("#editedentry").val($(this).attr("value"));
-		$(".idtoedit").val($(this).attr("name"));
-		$("#EditDialog").dialog( "open" ); // BC- Open the EditDialog 
-	});
-	<!-- BC- AJAX handler for form submissions
-	$(".form").submit(function() {
-		$.ajax({
-			type: "POST",
-			url: "PhraseAjax.php", // BC- the AJAX document holds the functions handling the form submissions
-			data: $(this).serialize(), // BC- set the data of the form into an array for POST
-			success: function(data) {
-					var x = data; // BC- Grab the result of the submission - these are coded as echo statements within the AJAX document
-					document.getElementById("ConfirmDialog").innerHTML = x; // BC- Set the contents of the confirmation dialog to the result
-			}
-		});
-		$("#ConfirmDialog").dialog("open"); // BC - Display the confirmation dialog with the returned text. 
-		return false; // BC- Return false so page does not auto-refresh. This allows the confirmation dialog to display
-	});
-});
-</script>
+<head>
 <!-- BC- Style for scroll box -->
 	<style>
 	div.scroll {
-		width: 380px;
+		width: 300px;
 		height: 300px;
 		overflow-y: scroll;
 	}
@@ -116,56 +38,31 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="scroll">
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>EmployeeID</th>
-			<th>Phrase</th>
-			<th colspan="2">Actions</th>
-		</tr>
-		<?php 
-		include "../Includes/config.php"; // BC- configuation data for the database
-		$ReturnPhrases = mysqli_query($Connection, "SELECT * FROM InappropriateContent ORDER BY InapprPhrase"); #BC- Select all rows from the phrases table
-			#BC- Loop through each returned phrase, setting each one as a row in a table
-			while ($Row = mysqli_fetch_array($ReturnPhrases)) {
-				echo "<tr>";
-				echo '<td class="ln">'. $Row['InapprContID'].'</td>'; #BC- Right align the line numbers, add some padding for readability 
-				echo '<td class="ln">'.$Row['EmployeeID']."</td>"; 
-				echo '<td>'.$Row['InapprPhrase']."</td>";
-				echo '<td><button class="EditButton" name="'.$Row['InapprContID'].'" value="'.$Row['InapprPhrase'].'">Edit</button></td>'; #BC- Edit link
-				echo '<td><button class="DeleteButton" name="'.$Row['InapprContID'].'" value="'.$Row['InapprPhrase'].'">Delete</button></td>'; #BC- Delete link
-				echo "</tr>";
-			}
-			mysqli_close($Connection); // BC - Close the database connection
-		?>
-	</table>
+<table>
+<?php 
+	$File = "../Includes/UnacceptedPhrases.txt"; #BC- Set the file path
+	$Entries = file($File); #BC- Read the file entries into an array
+	$Entries = array_filter(array_merge(array(0), array_map('strtolower', $Entries))); /*BC- Offset the array by 1 to 
+	match the file line numbers, make each entry lowercase for ease of comparison */
+	#BC- Read each line of the array into a table
+	foreach ($Entries as $Value_Num => $Value) {
+		echo "<tr>";
+		echo '<td class="ln">'. $Value_Num .'</td>'; #BC- Right align the line numbers, add some padding for readability 
+		echo "<td>$Value</td>"; 
+		echo '<td><form action="EditExistingPhrase.php"><input type="hidden" name="line" value="'.$Value_Num.'"><input type="hidden" name="entry" value="'.$Value.'"><input type="submit" value="Edit"></form></td>'; #BC- Edit link
+		echo '<td><form action="ConfirmPhraseDelete.php"><input type="hidden" name="line" value="'.$Value_Num.'"><input type="hidden" name="entry" value="'.$Value.'"><input type="submit" value="Delete"></form></td>'; #BC- Delete link
+		echo "</tr>";
+	}
+?>
+</table>
 </div>
 <br>
 <p>
 <!-- BC- Area to input new phrase -->
-	<form id="newphrase" class="form"> 
-		<input type="hidden" name="action" value="newphrase">
-		New entry: <input type ="text" id="newentry" name="newentry" size="25"> <br> <br>
-		<input type="submit" value="Submit">
-	</form>
+<form action="NewUnacceptedPhrase.php"> 
+New entry: <input type ="text" name="newentry" size="50"> <br> <br>
+<input type="submit" value="Submit">
+</form>
 </p>
-<!--BC- Jquery dialogs area -->
-<div id="DeleteDialog" title="Confirm phrase deletion">
-	<form id= "confirmdelete" class="form">
-		<input type="hidden" name="action" value="deletephrase">
-		<input type="hidden" class="idtodelete" name="line" value="">
-		Are you sure you want to delete the entry : <input class="phrasetodelete" name="entry" value="" readonly>
-	</form>
-</div>
-<div id="EditDialog" title="Edit phrase">
-	<form id="editphrase" class="form">
-		<input type="hidden" name="action" value="editphrase">
-		<input type="hidden" class="idtoedit" name="line" value="">
-		<input type="hidden" class="phrasetoedit" name="entry" value="">
-		New entry: <input type ="text" id="editedentry" name="newentry" size="25" value=""><!--BC- Pass both the old and new values to the CommitEdit page -->
-	</form>
-</div>
-<div id="ConfirmDialog" title "">
-</div>
 </body>
 </html>
