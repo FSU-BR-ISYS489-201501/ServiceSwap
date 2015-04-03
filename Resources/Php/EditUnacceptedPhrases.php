@@ -9,7 +9,7 @@ Dependencies: PhraseAjax.php
 To Do: 	Connect to live database with new config file	
 			Read session data for Employee ID
 			Pass Employee ID to new entries and edits
-			Depending on how the config file is coded, all references to $Connection may need to be changed
+			Depending on how the config file is coded, all references to $conn may need to be changed
 -->
 <head> 
 <!-- BC-  jQuery scripts and stylesheets courtesy jquery.com -->
@@ -125,7 +125,7 @@ $(document).ready(function() {
 		</tr>
 		<?php 
 		include "../Includes/config.php"; // BC- configuation data for the database
-		$ReturnPhrases = mysqli_query($Connection, "SELECT * FROM InappropriateContent ORDER BY InapprPhrase"); #BC- Select all rows from the phrases table
+		$ReturnPhrases = mysqli_query($conn, "SELECT * FROM InappropriateContent ORDER BY InapprPhrase"); #BC- Select all rows from the phrases table
 			#BC- Loop through each returned phrase, setting each one as a row in a table
 			while ($Row = mysqli_fetch_array($ReturnPhrases)) {
 				echo "<tr>";
@@ -136,7 +136,7 @@ $(document).ready(function() {
 				echo '<td><button class="DeleteButton" name="'.$Row['InapprContID'].'" value="'.$Row['InapprPhrase'].'">Delete</button></td>'; #BC- Delete link
 				echo "</tr>";
 			}
-			mysqli_close($Connection); // BC - Close the database connection
+			mysqli_close($conn); // BC - Close the database connection
 		?>
 	</table>
 </div>

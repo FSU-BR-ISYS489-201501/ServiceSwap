@@ -6,11 +6,11 @@ $password = "k5;Tpd#4(c_;";
 $dbname = "isys489c_BR_ServiceSwap";
 
 // Create connection
-$Connection = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($Connection->connect_error) {
-    die("Connection failed: " . $Connection->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 //echo "Connected successfully";
 ?>
