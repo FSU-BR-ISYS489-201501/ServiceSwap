@@ -9,6 +9,7 @@
                 <li><a href="#">Manage Accounts</a></li>
                 <li><a href="#">Manage Services</a></li>
                 <li><a href="#">Reports</a></li>
+		<li><a href="Logout.php">Logout</a></li>
 
             </ul>
         </div>
