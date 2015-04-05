@@ -3,16 +3,16 @@
 <?php
 	
 //Gives error message if they don't enter anything into the search bar
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['Submit'])) {
 	if(isset($_GET['go'])){
 // SQL Injection - Makes sure only letters are entered into the search
 	if(preg_match("^/[A-Za-z]+/",$_POST['Search'])){
 		//Name of form field we are checking against
-		$Search=$_POST['Search']
+		$Search=$_POST['Search'];
 //Connects to the database
-	include("../Resources/Includes/config.php");
+	include('.. /.. /.. /config.php');
 //Select the database
-	$mydb=mysql_select_db("isys489c_BR_ServiceSwap")
+	$mydb=mysql_select_db("isys489c_BR_ServiceSwap");
 //Select the database table
 	$Sql="SELECT * FROM OfferedServices WHERE OffServTitle LIKE'%".$Search."%' OR OffServDescription LIKE '%".$Search."%'" ;
 //Run the Query against the mysql query function
@@ -43,10 +43,10 @@
 		<title>Search Bar Function</title>
 	</head>
 	<body>
-		<form method="post" action="searchresults.php" id="searchbar">
-			<label for="search"> Search </label>
+		<form method="post" action="SearchFunction.php" id="searchbar">
+			<label for="Search"> Search </label>
 			<input type="text" name="Search" size="50" maxlength="150">
-			<input type="submit" name="submit" value="Search">
+			<input type="submit" name="Submit" value="Search">
 		</form>
 	</body>
 </html>
