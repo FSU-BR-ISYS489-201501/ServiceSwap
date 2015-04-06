@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 
 <html>
@@ -7,20 +5,21 @@
  $page_title = "Add a Service to a Provider Account!";
  // Includes file needs to allow file_uploads = On
  //Add the Header
-//include ('Resources/header.html');
-//include("Resources/file_with_errors.php"); 
-//include("Resources/Functions.php");
-//include("Resources/LoggedFooter.php");
-//include("Resources/NavBarLogged.php");
-//include("Resources/UnacceptedPhrases.php");
+//include ('Resources/Includes/header.html');
+//include("Resources/Includes/file_with_errors.php"); 
+//include("Resources/Includes/Functions.php");
+//include("Resources/Includes/LoggedFooter.php");
+//include("Resources/Includes/NavBarLogged.php");
+//include("Resources/Includes/UnacceptedPhrases.php");
 
-include("Resources/config.php");
-include("Resources/frontcontroller.php");
+//Get the connection to the Database 
+require('../../../config.php');
+ 
+//include('Resources/Includes/frontcontroller.php');
 ?>
  
-<!-- Get the connection to the Database -->
-<?php // require ('../mysqli_connect.php');?>
 
+ 
 <center>
 
 <?php 
@@ -32,23 +31,23 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
     && !empty($_POST['TravelDistance']) && !empty($_POST['SuggestedPrice'])) 
 {
 		//Set the Variables 
-		$ShortName = mysqli_real_escape_string($dbc, trim($_POST['ShortName']));
+		$ShortName = mysqli_real_escape_string($conn, trim($_POST['ShortName']));
 		$ServiceDescripton = $_POST['ServiceDescripton'];
-		$ServiceCategorys = mysqli_real_escape_string($dbc, trim($_POST['ServiceCategorys']));
-		$TravelDistance = mysqli_real_escape_string($dbc, trim($_POST['TravelDistance']));
-		$SuggestedPrice = mysqli_real_escape_string($dbc, trim($_POST['SuggestedPrice']));
+		$ServiceCategorys = mysqli_real_escape_string($conn, trim($_POST['ServiceCategorys']));
+		$TravelDistance = mysqli_real_escape_string($conn, trim($_POST['TravelDistance']));
+		$SuggestedPrice = mysqli_real_escape_string($conn, trim($_POST['SuggestedPrice']));
 		
 		//get the server time
 		date_default_timezone_set('America/Chicago'); // CDT
 		$DateTime = date('d/m/Y == H:i:s');
 		
-		//just here to remind me that sessions exist and might be userful later
+		//just here to remind me that sessions exist and might be useful later
 		//$ServiceCategorys = $_SESSION["total"];
 		
 		//insert into the database
-	    $InsertInto = "INSERT INTO clients (OffServTitle, OffServDescription , ServCategory, , , , , ) 
+	    $InsertInto = "INSERT INTO clients (OffServTitle, OffServDescription , ServCategoryID, OffServDistance, OffServPrice) 
 		VALUES ('$ShortName', '$ServiceDescripton', '$ServiceCategorys', '$TravelDistance','$SuggestedPrice', '$DateTime')";		
-		$RunInsertInto = @mysqli_query ($dbc, $InsertInto); // Run the query.
+		$RunInsertInto = @mysqli_query ($conn, $InsertInto); // Run the query.
 		
 		if ($RunInsertInto) 
 		{ // If it ran OK.
@@ -58,7 +57,7 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 			
 		//clears the query
 		$InsertInto = "";		
-        $RunInsertInto = @mysqli_query ($dbc, $InsertInto); // Run the query.
+        $RunInsertInto = @mysqli_query ($conn, $InsertInto); // Run the query.
 		
 		} 
 		else
@@ -190,24 +189,23 @@ else
 					'Tutoring','Yard Work');*/
 				?>
 				
-				<!-- Researched from http://stackoverflow.com/questions/24471268/dropdown-list-from-mysql-column-using-mysqli 
-				moded by Amber Snow-->
-					<label>Select your service type</label><br>
-
-					<select SC = "ServiceCategories">
-					<option value = "">-Select Category-</option>
+				<!-- Still not connecting properly -->				
+				<label>Select your service type</label><br>
+				<select name = "ServiceCategories"><option value = "">-Select Category-</option>;
+				
 				<?php
-					$querySC= "SELECT `ServCategory` FROM `ServiceCategories` ";
-					$db = mysqli_query($db, $querySC);
-					while ($data = mysqli_fetch_assoc($db)) 
-					{
-						echo "<option value='{".$data['ServCategory']."}'>".$data['ServCategory']."</option>";
-					}
-				   ?>
-				</select>  
-					
+				$sql = "SELECT ServCategoryID,ServCategory FROM ServiceCategories ORDER BY ServCategory"; 
+				echo "<select name = ServiceCategories value=''></option>";
+		
+				foreach ($conn->query($sql) as $row)
+				{
+					echo "<option value= $row[ServCategoryID]> $row[ServCategory] </option>"; 
+				}
+				echo "</select>";
+				?>
+			
 				<!-- Old way b4 database to get the array data for service categories	
-				create the state select menu
+				create the state select menu; this works...
 				echo '<select name = "ServiceCategorys">';
 					foreach($ServiceArray as $value)
 					{
@@ -243,5 +241,5 @@ else
 </fieldset>
 </form>
 <br>	
-<?php/include("Resources/LoggedFooter.php");?>	
+<?php require ('../Includes/LoggedFooter.php');?>
 </html>
