@@ -11,24 +11,25 @@ To Do: 	Is there a minimum phrase length?
 			Depending on how the config file is coded, all references to $conn may need to be changed
 -->
 <?php
+include '../Includes/config.php';
 #BC- Check what type the incoming 
 if (isset($_POST['action'])){
 	switch ($_POST['action']){
 		case "editphrase":
-			editphrase();
+			editphrase($conn);
 			break;
 		case "newphrase":
-			newphrase();
+			newphrase($conn);
 			break;
 		case "deletephrase":
-			deletephrase();
+			deletephrase($conn);
 			break;
 		default:
 			break;
 	}
 }
 #BC - Function to handle incoming phrase edits
-function editphrase(){
+function editphrase($conn){
 	include '../Includes/config.php';
 	$Entry = trim(strtolower($_POST['entry'])); # BC - read the old entry to compare
 	$Line = $_POST['line']; # BC- read the line number - this corresponds to the id in the database
@@ -58,7 +59,7 @@ function editphrase(){
 	exit;
 }
 # BC - Function to handle incoming new phrases
-function newphrase(){
+function newphrase($conn){
 	include '../Includes/config.php';
 	$NewEntry = trim(strtolower(preg_replace('/\s\s+/',' ', str_replace("\n"," ",$_POST['newentry'])))); # BC- read the submitted new entry - remove extra spaces and convert to lower case
 	# BC - check that the phrase falls within the allowed length
@@ -82,7 +83,7 @@ function newphrase(){
 	exit;
 }
 # BC- Function to handle incoming phrase deletes
-function deletephrase(){
+function deletephrase($conn){
 	include '../Includes/config.php';
 	$Entry = trim(strtolower($_POST['entry'])); # BC- Read the incoming phrase
 	$Line = $_POST['line'];  # BC- Read the incoming line number / ID
