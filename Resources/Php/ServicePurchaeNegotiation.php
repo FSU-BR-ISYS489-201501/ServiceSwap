@@ -34,34 +34,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!--  -->
 <form action="NegotiationDate" method="post">
-	<p>Date: <input type="date" name="date" value=""/>
+	<p>Date: <input type="date" name="date" value="" required/>
 	<input type="submit" name="Accept" value="Accept" />
 	<button type="button" onclick="myFunction1()">Counter Offer</button>
     <script>
     function myFunction1() {
-    document.getElementById("date").innerHTML = '<input type="text" name="input1">';}
+    document.getElementById("date").innerHTML = '<input type="text" name="input1" required>';}
     </script>
     <p id="date"></p>
 
 	
 <form action="NegotiationTime" method="post">
-	<p>Time: <input type="time" name="time" value=""/>
+	<p>Time: <input type="time" name="time" value="" required/>
 	<input type="submit" name="Accept" value="Accept" />
 	<button type="button" onclick="myFunction2()">Counter Offer</button>
     <script>
     function myFunction2() {
-    document.getElementById("time").innerHTML = '<input type="text" name="input2">';}
+    document.getElementById("time").innerHTML = '<input type="text" name="input2" required>';}
     </script>
     <p id="time"></p>
 	
 	
 <form action="NegotiationPayment" method="post">
-	Payment <input type="text" name="payment" value="" />
+	Payment <input type="text" name="payment" value="" required />
 	<input type="submit" name="Accept" value="Accept" />
 	<button type="button" onclick="myFunction3()">Counter Offer</button>
     <script>
     function myFunction3() {
-    document.getElementById("payment").innerHTML = '<input type="text" name="input3">';}
+    document.getElementById("payment").innerHTML = '<input type="text" name="input3"required>';}
     </script>
     <p id="payment"></p>
 </form>
