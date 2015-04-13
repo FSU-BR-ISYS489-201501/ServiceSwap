@@ -83,7 +83,7 @@ function newphrase($conn){
 		}
 		# BC - If all is good, add the phrase to the database. 
 		else{
-			$AddPhrase = $conn ->prepare("INSERT INTO Inappropriatecontent (`EmployeeID`, `InapprPhrase`) VALUES (?,?)") ; #BC - Create a prepared statement
+			$AddPhrase = $conn ->prepare("INSERT INTO InappropriateContent (`EmployeeID`, `InapprPhrase`) VALUES (?,?)") ; #BC - Create a prepared statement
 			$EmployeeID = 1;
 			$AddPhrase->bind_param("is", $EmployeeID, $NewEntry); #BC- Set the parameters for the prepared statement
 			$AddPhrase->execute(); # BC - Add the phrase
