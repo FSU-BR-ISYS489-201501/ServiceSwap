@@ -152,14 +152,14 @@
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">Username</span>
                                             <input type="text" class="form-control" placeholder=""
-                                                   aria-describedby="basic-addon1">
+                                                   aria-describedby="basic-addon1" id="email">
                                         </div>
                                         <br>
 
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1">Password</span>
                                             <input type="text" class="form-control" placeholder=""
-                                                   aria-describedby="basic-addon1">
+                                                   aria-describedby="basic-addon1" id="pass">
                                         </div>
                                         <br>
 
