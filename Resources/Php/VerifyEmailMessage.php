@@ -23,6 +23,7 @@
 </style>
 </head>
 <body>
+<?php include "../Includes/NavBarNotLogged.php"; ?>
 <p class="center">
 Thank you so much for registering!<br>
 Please check the email account you used to sign up and verify your email address by clicking on the link we sent you.<br>
@@ -30,4 +31,5 @@ Please check the email account you used to sign up and verify your email address
 <br>
 <br>
 <a class="italic" href="ContactUs.php">Didn't get an email?</a>
+<?php include "../Includes/NotLoggedFooter.php"; ?>
 </p>
