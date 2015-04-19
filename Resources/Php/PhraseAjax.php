@@ -4,8 +4,6 @@ Date: March 2015
 Description: A file holding functions to be called on via AJAX from EditUnacceptablePhrases.php 
 Dependencies: EditUnacceptablePhrases.php
 					Config.php
-To Do: 	Read session data for Employee ID
-			Pass Employee ID to new entries and edits
 -->
 <?php
 include '../Includes/config.php';
