@@ -5,7 +5,7 @@ I have lines that need to be disabled, (User variable should be coming in on a s
 so please comment out the certain lines or let me know when you need that done
 cell: call or txt 989-859-9520 email:snowa6@ferris.edu -->
 
-<!-- Add a service to a service provider
+<!-- Add a Service request to a Consumer account
 By: Amber Snow 
 5/2/2015
 Inserts given fields into the data base for 
@@ -14,7 +14,7 @@ and appear on the search function
 -->
 <html>
 <?php 
- $page_title = "Add a Service to a Provider Account!";
+ $page_title = "Add a Service to a Consumer Account!";
  // Includes file needs to allow file_uploads = On
 
 //Get the connection to the Database 
@@ -37,55 +37,40 @@ function get_current_user_id()
 }
 
 
-
 //main 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty($_POST['ServiceCategorys']) 
-    && !empty($_POST['TravelDistance']) && !empty($_POST['SuggestedPrice'])) 
+    && !empty($_POST['Zip']) && !empty($_POST['SuggestedPrice'])) 
 
 		//Set the Variables 
 		$PlaceHolder = mysqli_real_escape_string($conn, trim($_POST['ShortName']));
 		$SerName = mysqli_real_escape_string($conn, trim($_POST['ShortName']));
 		$ServiceDescripton = $_POST['ServiceDescripton'];
 		$ServiceCategorys = $_POST['ServiceCategories'];
-		$TravelDistance = $_POST['TravelDistance'];
+		$SuggestedPrice = mysqli_real_escape_string($conn, trim($_POST['SuggestedPrice']));
+		$Zip = $_POST['Zip'];
 		$Flag = 0;
 		
-		if(!is_numeric($TravelDistance)) 
+		if(empty($Zip)) 
 		{
-			$msg = '<span class="error"> Travel Distance entered was not numeric! </span>';
-			$Flag = 1;
+			$msg = '<span class="error"> Please enter a zip code value</span>';
+			Flag = 1;
+		} 
+		else if(!is_numeric($Zip)) 
+		{
+			$msg = '<span class="error"> Zip code entered was not numeric</span>';
+			Flag = 1;
+		} 
+		else if(strlen($Zip) != 5) 
+		{
+			$msg = '<span class="error"> The Zip code entered was not 5 digits long</span>';
+			Flag = 1;
 		}
-		
-		$SuggestedPrice = mysqli_real_escape_string($conn, trim($_POST['SuggestedPrice']));
+				
 		$User = get_current_user_id();
 		$Travel = $_POST['Travel'];
-
-		//equipment check box value set
-		if(isset($_POST['Equipment']))
-		{
-			//$Equipment is checked and value = 1
-			$Equipment = $_POST['Equipment'];
-		}
-		else
-		{
-			//$Equipment is not equal to checked; set value to 0
-			$Equipment = 0;
-		}
-		
-		//ServiceExchanges check box value set
-		if(isset($_POST['ServiceExchanges']))
-		{
-			//$ServiceExchanges is checked and value = 1
-			$ServiceExchanges = $_POST['ServiceExchanges'];
-		}
-		else
-		{
-			//$ServiceExchanges is not equal to checked; set value to 0
-			$ServiceExchanges = 0;
-		}
-		
+	
 		//Active check box value set
 		if(isset($_POST['Active']))
 		{
@@ -128,11 +113,11 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 	//insert into the database
 	if(Flag == 0)
 	{
-	    $InsertInto = "INSERT INTO OfferedServices (UserID, AcceptServExchange, ServActive, OffServTitle, OffServDescription , ServCategoryID, OffServDistance, OffServPrice, ServEquipment, OffServDistanceUnits) 
-											VALUES ('$ID', '$ServiceExchanges', '$Active', '$SerName', '$ServiceDescripton', '$ServiceCategorys', '$TravelDistance','$SuggestedPrice', '$Equipment', '$Travel')";		
+	    $InsertInto = "INSERT INTO OfferedServices (UserID, ReqServCompleted, ReqServTitle, ReqServDescription , ServCategoryID, ReqServPrice, ReqServLocation ) 
+											VALUES ('$ID', '$Active', '$SerName', '$ServiceDescripton', '$ServiceCategorys', '$SuggestedPrice', '$Zip')";		
 		$RunInsertInto = mysqli_query($conn, $InsertInto); // Run the query	
 
-		$Thankyou = "Your Service is now placed!";
+		$Thankyou = "Your Request for a service has now been placed!";
 	}	
 		if ($RunInsertInto)
 		{ // If it ran OK.
@@ -147,19 +132,19 @@ if (!empty($_POST['ShortName']) && !empty($_POST['ServiceDescripton']) && !empty
 		{ // If it did not run OK.
 			// Public message:
 			echo '<h1>System Error</h1>
-			<p class="error">Your service could not be placed due to a system error. We apologize for any inconvenience.</p>';
+			<p class="error">Your request could not be placed due to a system error. We apologize for any inconvenience.</p>';
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		} 
 		
 		//get the serviceID
-		$Run = mysqli_query($conn, "SELECT OffServID FROM OfferedServices Where UserID = '$ID' AND OffServTitle = '$SerName' AND ServCategoryID = '$ServiceCategorys' LIMIT 1;");
+		$Run = mysqli_query($conn, "SELECT ReqServID FROM RequestedServices Where UserID = '$ID' AND ReqServTitle = '$SerName' AND ServCategoryID = '$ServiceCategorys' LIMIT 1;");
 		while($row = mysqli_fetch_array($Run))
 		{
-			$OffServID = $row['OffServID'];
+			$ReqServID = $row['ReqServID'];
 		}
 		
 		//checking the service ID so it inserts correctly below
-		//echo "Service ID: $OffServID ";
+		//echo "Service ID: $ReqServID ";
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Credit to: http://techstream.org/Web-Development/PHP/Multiple-File-Upload-with-PHP-and-MySQL
 //by Anush on Tech Steam
@@ -183,7 +168,7 @@ if(isset($_FILES['files'])){
 		//insert into the table?
 		$query = "INSERT INTO OfferedServicesImages(OffServID, OffServImage)
 				  VALUES ('$OffServID', '$file_name')";
-        $desired_dir = "user_data";
+        $desired_dir = "req_data";
 		
         if(empty($errors)==true)
 		{
@@ -193,13 +178,13 @@ if(isset($_FILES['files'])){
             }
             if(is_dir("$desired_dir/".$file_name)==false)
 			{
-                move_uploaded_file($file_tmp,"user_data/".$file_name);
+                move_uploaded_file($file_tmp,"req_data/".$file_name);
             }
 			else
 			{	//rename the file if another one exist
 				//modified the time/file name
 				$Time = time();
-                $new_dir = "user_data/".$file_name.$Time;
+                $new_dir = "req_data/".$file_name.$Time;
                 rename($file_tmp,$new_dir);				
             }
 			//changed to sqli statement add the connection
@@ -239,9 +224,9 @@ else
 		$ErrorString = "$ErrorString". " " ."selecting a service category, ";
 	}
 	
-	if(empty($_POST['TravelDistance']))	
+	if(empty($_POST['Zip']))	
 	{
-		$ErrorString = "$ErrorString". " " . "selecting your travel distance, ";
+		$ErrorString = "$ErrorString". " " . "your location zip code, ";
 	}
 	
 	if(empty($_POST['SuggestedPrice']))
@@ -270,16 +255,7 @@ else
 					<label>Name your service:</label><br>
 					<input type = "text" name = "ShortName" value ="<?php if(isset($_POST['ShortName'])) echo $_POST['ShortName']?>"/>
 				</p>
-				 
-				<!-- Check box for Equipment -->
-				<p><label> Check the box if you have equipment:</label><br>
-					<input type="checkbox" name="Equipment" value= "1"/>
-				</p> 
-				
-				<!-- Check box for Accepting Exchanges -->
-				<p><label> Check the box if you are willing to accept Service Exchanges:</label><br>
-					<input type="checkbox" name="ServiceExchanges" value="1"/>
-				</p> 
+		
 				
 				<!-- Description Textarea Box -->
 				<p> <label>Enter the details about your service:</label><br>
@@ -326,19 +302,10 @@ else
 				echo '</select>'; 
 				-->
 				
-				<!-- TravelDistance Radio Box -->
-				<!-- Miles VS Kilometers-->
-				<p>
-					<input type = "radio" name = "Travel" id = "Kilometers" value = "0" <?php if(isset($_POST['Travel']) && ($_POST['Travel'] == '0')) echo 'checked = "checked"';?> /><label for "Kilometers">Kilometers</label>
-					<input type = "radio" name = "Travel" id = "Miles" value = "1" checked = "checked" <?php if(isset($_POST['Travel']) && ($_POST['Travel'] == '1')) echo 'checked = "checked"';?> /><label for "Miles">Miles</label>
-				</p>
-					
 				<!-- TravelDistance Number Box -->
 				<p>
-					<label>Enter the number of miles your are willing to travel:</label><br>
-					<!--<label>Tip: use the arrows to increment </label><br> -->
-					<!--<input type="number" name="TravelDistance" min = "0" max = "24,000" step = "10" value = "<?php // if(isset($_POST['TravelDistance'])) echo $_POST['TravelDistance']?>"/>-->
-					<input type="text" id="TravelDistance" name="TravelDistance" value="<?php echo $TravelDistance?>" size=5 /><?php echo $msg;?>
+					<label>Please enter your 5 digit zip code:</label><br>
+					<input type="text" id="Zip" name="Zip" value="<?php echo $Zip?>" size=5 /><?php echo $msg;?>
 				</p>
 				
 				<!-- SuggestedPrice Number Box -->
@@ -348,7 +315,7 @@ else
 				</p>
 				
 				<!-- Check box for Accepting Exchanges -->
-				<p><label> Check the box if this Service is Active:</label><br>
+				<p><label> Check the box if this Request is Active:</label><br>
 					<input type="checkbox" name="Active" value="1"/>
 				</p> 
 				
