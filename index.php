@@ -37,6 +37,18 @@
 		else if ($_GET['error'] == 4){
 			echo "<script type='text/javascript'>alert('No password was typed in.');</script>";
 		}
+		else if ($_GET['error'] == 5){
+			echo "<script type='text/javascript'>alert('Your account has been disabled due to inappropriate activity. Contact support for any concerns regarding the ban.');</script>";
+		}
+		else if ($_GET['error'] == 6){
+			echo "<script type='text/javascript'>alert('Your account has been disabled due to inactivity. If you require access to this account, contact technical support.');</script>";
+		}
+		else if ($_GET['error'] == 7){
+			echo "<script type='text/javascript'>alert('Your account has been disabled due to being closed by the owner. If you require access to this account, contact technical support.');</script>";
+		}
+		else if ($_GET['error'] == 8){
+			echo "<script type='text/javascript'>alert('This employee account has been disabled. If your account may have been disabled by mistake, contact technical support about this issue.');</script>";
+		}
 	}
 ?>
 

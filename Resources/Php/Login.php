@@ -61,11 +61,11 @@ $email = clean($_POST["email"]);
 //checks if email ends with 91swapraptor.com for employee account or if not for user account
 if(substr($email, -16)== "91swapraptor.com")
 {
-	$findUserQuery ="SELECT * FROM Employee where Email ='".$email. "' and Status = 0 LIMIT 1";
+	$findUserQuery ="SELECT L.Email, L.password, E.FName, E.LName, E.EmployeeID, E.Disabled, E.EmployeeType FROM Employee E, EmployeeLogin L WHERE E.Email = L.Email AND E.Email ='".$email. "' LIMIT 1";
 }
 else
 {
-	$findUserQuery ="SELECT * FROM User where Email ='".$email."' and Status = 0 LIMIT 1";
+	$findUserQuery ="SELECT L.Email, L.password, U.FName, U.LName, U.UserID, U.Status FROM User U, UserLogin L WHERE U.Email = L.Email AND U.Email ='".$email."' LIMIT 1";
 }
 
 //if password is invalid, sends user back to homepage with error 4
@@ -101,14 +101,32 @@ if($valid)
 	//checks if user exists
 	if(mysqli_num_rows($result)!= 0)
 	{
-		$row = mysqli_fetch_array($result, MYSQL_ASSOC );
+		$row = mysqli_fetch_array($result, MYSQL_NUM );
 		
 		/*stores results from query in the following variables*/
 		
-		$passwordDB = $row["pwd"];
-		$emailDB = $row["email"];
-		//$saltDB = $row["salt"];
-		//$idDB = $row["acc_id"];
+		$passwordDB = $row[1];
+		$emailDB = $row[0];
+		$disabled = $row[5];
+		
+		if ($disabled == 1){
+			header("Location: http://brserviceswap.isys489.com?error=5");
+			mysqli_clost($conn);
+			exit;
+		}
+		else if ($disabled == 2){
+			header("Location: http://brserviceswap.isys489.com?error=6");
+			mysqli_clost($conn);
+			exit;
+		}
+		else if ($disabled == 3){
+			header("Location: http://brserviceswap.isys489.com?error=7");
+			mysqli_clost($conn);
+			exit;
+		}
+		else if ($disabled == 1 && isset($row[6])){
+			header("Location: http://brserviceswap.isys489.com?error=8");
+		}
 	
 		//verifying password, checks if the password is the same as the hashed password in the database
 		
@@ -119,9 +137,10 @@ if($valid)
 			//starts session and initiates session variables
 			session_start();
 		
-			$_SESSION["email"] = $row["email"];
-			$_SESSION["fname"] = $row["fname"];
-			$_SESSION["lname"] = $row["lname"];
+			$_SESSION["email"] = $row[0];
+			$_SESSION["fname"] = $row[2];
+			$_SESSION["lname"] = $row[3];
+			$_SESSION["id"] = $row[4];
 		
 			header("Location: http://brserviceswap.isys489.com");
 		}
