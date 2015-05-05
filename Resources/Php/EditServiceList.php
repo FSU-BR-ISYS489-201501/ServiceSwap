@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <!-- EditServiceList.php 
@@ -9,16 +12,20 @@ Dependencies: PhraseAjax.php
 
 -->
 <head> 
+<title>Edit Services</title>
 <!-- BC-  jQuery scripts and stylesheets courtesy jquery.com -->
 <link rel="stylesheet" type="text/css" href="../Css/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="../Css/jquery.mmenu.all.css"/>
+<link rel="stylesheet" href="../Css/swap_br.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../Css/stylesheet.css" type="text/css" charset="utf-8" /> 
 <script src="../Js/jquery-1.11.2.min.js"></script>
 <script src="../Js/jquery-ui.js"></script>
- <script>
+<script>
 $(document).ready(function() {
 	<!-- BC- jQuery confirmation box for edits/deletes -->
 	$("#ConfirmDialog").dialog({
 		autoOpen:false,
-		resizable: false,
+		resizable: true,
 		width: 350,
 		modal: true,
 		buttons:{
@@ -55,13 +62,14 @@ $(document).ready(function() {
 	<!-- BC- jQuery edit dialog -->
 	$("#EditDialog").dialog({
 		autoOpen: false,
-		resizable: false,
-		width: 350,
+		resizable: true,
+		width: 730,
+		height: 430,
 		modal: true,
 		buttons: {
 			"OK": function(){
 				$(this).dialog("close");
-				$("#editphrase").submit(); // BC- Submit the form, AJAX handles the submission
+				$("#commitedit").submit(); // BC- Submit the form, AJAX handles the submission
 				},
 			Cancel: function() {
 				$(this).dialog("close");
@@ -71,21 +79,17 @@ $(document).ready(function() {
 			}
 		}
 		});
-	<!-- BC- jQuery edit button click event handler -->
-	$( ".EditButton").click(function() {
-		$(".phrasetoedit").val($(this).attr("value")); // BC- Set the values in the dialog to the corresponding values of the button
-		$("#editedentry").val($(this).attr("value"));
-		$(".idtoedit").val($(this).attr("name"));
-		$("#EditDialog").dialog( "open" ); // BC- Open the EditDialog 
-	});
-	<!-- BC- AJAX handler for form submissions
+<!-- BC- AJAX handler for form submissions
 	$(".form").submit(function() {
 		$.ajax({
 			type: "POST",
 			url: "ServiceAjax.php", // BC- the AJAX document holds the functions handling the form submissions
 			data: $(this).serialize(), // BC- set the data of the form into an array for POST
+			//dataType: "json", BC - I was unable to figure out how to read the returned JSON correctly.
 			success: function(data) {
-					var x = data; // BC- Grab the result of the submission - these are coded as echo statements within the AJAX document
+					//var json = eval('('+data+')'); 
+					//var x = json.resp;
+					var x = data;
 					document.getElementById("ConfirmDialog").innerHTML = x;
 					$("#newtitle").val("");
 					$("#newcategory").val("");
@@ -101,6 +105,37 @@ $(document).ready(function() {
 		$("#ConfirmDialog").dialog("open"); // BC - Display the confirmation dialog with the returned text. 
 		return false; // BC- Return false so page does not auto-refresh. This allows the confirmation dialog to display
 	});
+
+		<!-- BC- AJAX handler for edit submissions
+	$(".edit").submit(function() {
+		$.ajax({
+			type: "POST",
+			url: "ServiceAjax.php", // BC- the AJAX document holds the functions handling the form submissions
+			data: $(this).serialize(), // BC- set the data of the form into an array for POST
+			success: function(data) {
+					var x = data; // BC- Grab the result of the submission - these are coded as echo statements within the AJAX document
+					document.getElementById("commitedit").innerHTML = x;
+			}
+
+		});
+		$("#EditDialog").dialog("open"); // BC - Display the confirmation dialog with the returned text. 
+		return false; // BC- Return false so page does not auto-refresh. This allows the confirmation dialog to display
+	});
+
+	$("#commitedit").submit(function() {
+		$.ajax({
+			type: "POST",
+			url: "ServiceAjax.php",
+			data: $(this).serialize(),
+			success: function(data){
+					var x = data;
+					document.getElementById("ConfirmDialog").innerHTML = x;
+			}
+		})
+		$("#ConfirmDialog").dialog("open"); // BC - Display the confirmation dialog with the returned text. 
+		return false; 
+	});
+
 });
 </script>
 <!-- BC- Style for scroll box -->
@@ -122,13 +157,29 @@ $(document).ready(function() {
 		text-align: right;
 	}
 	</style>
-	<title>Edit Services</title>
-</head>
+	</head>
 <body>
+<?php
+#BC-  Redirect script courtesy GaryDevenay, please see http://stackoverflow.com/questions/7066527/redirect-a-user-after-the-headers-have-been-sent
+function redirect(){
+    $url = "http://brserviceswap.isys489.com/";
+    $string = '<script type="text/javascript">';
+    $string .= 'window.location = "' . $url . '"';
+    $string .= '</script>';
+    echo $string;
+}
+include "../Includes/frontcontroller.php";
+#BC- Redirect the user if they aren't logged in. This page should be for admin access only. 
+if(check_session_head() == false){
+	redirect();
+}
+?>
+
 <h3>Active Services</h3>
 <div class="scroll">
-	<table>
+	<table style="padding-left:50px">
 		<tr>
+			<th></th>
 			<th>ID</th>
 			<th>Service Title</th>
 			<th>Category</th>
@@ -143,9 +194,8 @@ $(document).ready(function() {
 		$EquipProvided = "";
 		$AcceptExchange = "";
 		$DistanceUnits = "";
-		$ReturnServices = mysqli_query($conn, "SELECT * FROM OfferedServices INNER JOIN ServiceCategories ON OfferedServices.ServCategoryID = ServiceCategories.ServCategoryID WHERE ServActive=1" ); #BC- Select all rows from the phrases table
-		#$ReturnServices = mysqli_query($conn, "SELECT o.*, s.* FROM OfferedServices AS o, INNER JOIN ServiceCategories AS s ON o.ServCategoryID = s.ServCategoryID WHERE o.ServActive=1"); #BC- Select all rows from the phrases table	
-		#BC- Loop through each returned phrase, setting each one as a row in a table
+		$ReturnServices = mysqli_query($conn, "SELECT * FROM OfferedServices INNER JOIN ServiceCategories ON OfferedServices.ServCategoryID = ServiceCategories.ServCategoryID WHERE ServActive=1 ORDER BY OffServTitle" ); #BC- Select all rows from the phrases table
+		#BC- Loop through each returned service, setting each one as a row in a table
 			while ($Row = mysqli_fetch_array($ReturnServices)) {
 				switch($Row['ServEquipment']){
 					case 0 : 
@@ -174,6 +224,7 @@ $(document).ready(function() {
 
 				}
 				echo "<tr>";
+				echo '<td><form class="edit"><input type="hidden" name="servid" value="'.$Row['OffServID'].'"><input type="hidden" name="action" value="editservice"><input type="submit" value="Edit"></form></td>';
 				echo '<td class="ln">'. $Row['OffServID'].'</td>'; #BC- Right align the line numbers, add some padding for readability 
 				echo '<td>'.$Row['OffServTitle'].'</td>';
 				echo '<td>'.$Row['ServCategory'].'</td>';
@@ -193,7 +244,7 @@ $(document).ready(function() {
 <br>
 <p>
 	<h3>Add a New Service</h3>
-	<table >
+	<table>
 		<tr>
 		<th>Service Title</th>
 		<th>Category</th>
@@ -207,7 +258,7 @@ $(document).ready(function() {
 		<tr id="newservice">
 		<form class="form"><input type="hidden" name="action" value="newservice">
 			<td><input type="text" id="newtitle" name="newtitle" size="20"></td>
-			<td><select name="category" id="newcategory"> 
+			<td><select name="newcategory" id="newcategory"> 
 				<option value="-1" selected>Category</option>
 				<?php 
 					include "../Includes/config.php";
@@ -270,9 +321,8 @@ $(document).ready(function() {
 		$Active = "";
 		$AcceptExchange = "";
 		$DistanceUnits = "";
-		$ReturnServices = mysqli_query($conn, "SELECT * FROM OfferedServices INNER JOIN ServiceCategories ON OfferedServices.ServCategoryID = ServiceCategories.ServCategoryID" ); #BC- Select all rows from the phrases table
-		#$ReturnServices = mysqli_query($conn, "SELECT o.*, s.* FROM OfferedServices AS o, INNER JOIN ServiceCategories AS s ON o.ServCategoryID = s.ServCategoryID WHERE o.ServActive=1"); #BC- Select all rows from the phrases table	
-		#BC- Loop through each returned phrase, setting each one as a row in a table
+		$ReturnServices = mysqli_query($conn, "SELECT * FROM OfferedServices INNER JOIN ServiceCategories ON OfferedServices.ServCategoryID = ServiceCategories.ServCategoryID" ); 
+		#BC- Loop through each returned service, setting each one as a row in a table
 			while ($Row = mysqli_fetch_array($ReturnServices)) {
 				switch($Row['ServEquipment']){
 					case 0 : 
@@ -309,14 +359,13 @@ $(document).ready(function() {
 						break;
 
 				}
-
 				echo "<tr>";
-				echo '<form class="form"><input type="hidden" name="action" value="toggleactive">';
+				echo '<form class="form"><input type="hidden" name="action" value="toggleactive">'; // BC - Button to toggle service active/inactive
 				echo '<input type="hidden" name="activestatus" value="'.$Row['ServActive'].'">';
 				echo '<input type="hidden" name="servid" value="'.$Row['OffServID'].'">';
 				echo '<td><input type="submit" value="'.$Active.'"></td>';
 				echo '</form>';
-				echo '<td class="ln">'. $Row['OffServID'].'</td>'; #BC- Right align the line numbers, add some padding for readability 
+				echo '<td class="ln">'. $Row['OffServID'].'</td>';
 				echo '<td>'.$Row['OffServTitle']."</td>";
 				echo '<td>'.$Row['ServCategory']."</td>";
 				echo '<td>'.$Row['OffServDescription']."</td>";
@@ -324,8 +373,6 @@ $(document).ready(function() {
 				echo '<td>'.$Row['OffServDistance'].' '.$DistanceUnits.'</td>';
 				echo '<td>'.$AcceptExchange.'</td>';
 				echo '<td>'.$EquipProvided.'</td>';
-				#echo '<td><button class="EditButton" name="'.$Row['InapprContID'].'" value="'.$Row['InapprPhrase'].'">Edit</button></td>'; #BC- Edit link
-				#echo '<td><button class="DeleteButton" name="'.$Row['InapprContID'].'" value="'.$Row['InapprPhrase'].'">Delete</button></td>'; #BC- Delete link
 				echo '</form>';
 				echo "</tr>";
 			}
@@ -337,5 +384,11 @@ $(document).ready(function() {
 <!--BC- Jquery dialogs area -->
 <div id="ConfirmDialog" title "">
 </div>
+
+<div id="EditDialog" title="Edit Service">
+	<form id="commitedit">
+	</form>
+</div>
+
 </body>
 </html>
